@@ -10,7 +10,7 @@
         }
     ],
     "bin": ["bin/pec"],
-    "require-dev": {
-        "phpspec/phpspec": "^3.2"
+    "require": {
+        "phpspec/phpspec": "*"
     }
 }
