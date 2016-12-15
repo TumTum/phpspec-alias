@@ -1,14 +1,8 @@
 {
-    "name": "tmatthaiou/phpspec-alias",
+    "name": "tumtum/phpspec-alias",
     "description": "Change run/desc command quickly",
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Tobias Matthaiou",
-            "email": "developer@tobimat.eu"
-        }
-    ],
     "bin": ["bin/pec"],
     "require": {
         "phpspec/phpspec": "*"
