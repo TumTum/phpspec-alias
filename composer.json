@@ -1,6 +1,6 @@
 {
     "name": "tumtum/phpspec-alias",
-    "description": "Change run/desc command quickly",
+    "description": "Change phpspec run or describe command quickly",
     "type": "library",
     "license": "MIT",
     "bin": ["bin/pec"],
