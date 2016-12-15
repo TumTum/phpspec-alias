@@ -1,0 +1,52 @@
+#!/usr/bin/env bash --login
+
+SPEC_COMMAND="run"
+SPEC_FILE="";
+NO_ARG=0;
+
+if [[ -z $@ ]]; then
+    NO_ARG=1
+fi
+
+for i in "$@"; do
+    case $i in
+        -d|--desc)
+            SPEC_COMMAND="desc"
+            shift
+            ;;
+        -n)
+            shift;
+            echo $1'\' > /tmp/namespace
+            echo "Namespace $1 gesetzt"
+            exit 0
+            ;;
+        *)
+            SPEC_FILE=$1
+            shift
+            ;;
+    esac
+    shift
+done
+
+if [[ -f /tmp/namespace ]]; then
+    SPEC_NAMESPACE=$(cat /tmp/namespace)
+fi
+
+FILE="'${SPEC_NAMESPACE}${SPEC_FILE}'";
+
+if [[ NO_ARG -eq 1 ]]; then
+    FILE=""
+fi
+
+root=$(dirname $0);
+vendor='../vendor'
+phpspec="phpspec/phpspec/bin/phpspec";
+
+phpspeccmd="${root}/${vendor}/${phpspec}"
+if [[ ! -f $phpspeccmd ]]; then
+    phpspeccmd="${root}/../../../${phpspec}"; # Composer ist eingebunden
+fi
+
+cmd="${phpspeccmd} ${SPEC_COMMAND} ${FILE}"
+echo $cmd;
+eval $cmd;
