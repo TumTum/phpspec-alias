@@ -39,13 +39,9 @@ if [[ NO_ARG -eq 1 ]]; then
 fi
 
 root=$(dirname $0);
-vendor='../vendor'
-phpspec="phpspec/phpspec/bin/phpspec";
+phpspec="phpspec";
 
-phpspeccmd="${root}/${vendor}/${phpspec}"
-if [[ ! -f $phpspeccmd ]]; then
-    phpspeccmd="${root}/../../../${phpspec}"; # Composer ist eingebunden
-fi
+phpspeccmd="${root}/${phpspec}"
 
 cmd="${phpspeccmd} ${SPEC_COMMAND} ${FILE}"
 echo $cmd;
